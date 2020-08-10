@@ -24,7 +24,12 @@ class UserController extends Controller
         $city = City::where('status',1)->get();
         $area = Area::all();
         $users=User::where('user_type',2)->where('status',1)->get();
+<<<<<<< HEAD
         return view('manage.User.index', compact('city','users','area'));
+=======
+        $user_type=$request->user_type;
+        return view('manage.User.index', compact('city','users','user_type'));
+>>>>>>> c6bb89442de12201368e2167143ad35aea917b15
     }
 
     /**

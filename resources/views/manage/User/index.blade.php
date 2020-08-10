@@ -90,6 +90,7 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        @if(!$user_type)
                                         <div class="col-sm-12 col-md-2">
                                             <div class="form-group">
                                                 <select name="user_type" class="custom-select mr-sm-2"  id="user_type">
@@ -100,6 +101,7 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        @endif
                                         <div class="col-sm-12 col-md-2">
                                             <div class="form-group">
                                                 <select name="dataFilter" class="custom-select mr-sm-2"  id="dateF">

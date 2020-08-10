@@ -18,7 +18,7 @@
             "search": "بحث :"
         },
 
-        ajax: "{{ route('User.view') }}",
+        ajax: "{{ route('User.view',['user_type'=>$user_type]) }}",
 
         columns:
             [

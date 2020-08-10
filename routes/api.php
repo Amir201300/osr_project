@@ -47,6 +47,7 @@ Route::middleware('auth:api')->group(function () {
     {
         Route::get('/get_jobs', 'Api\JobsController@get_jobs')->name('jobs.get_jobs');
         Route::get('/single_job/{id}', 'Api\JobsController@single_job')->name('jobs.single_job');
+        Route::get('/jobs_by_city/{id}', 'Api\JobsController@jobs_by_city')->name('jobs.jobs_by_city');
     });
 
     //packages routs
@@ -101,3 +102,6 @@ Route::prefix('general_info')->group(function()
     Route::get('/get_area/{city_id}', 'Api\General_infoController@get_area')->name('general_info.get_area');
     Route::get('/get_Advices', 'Api\General_infoController@get_Advices')->name('general_info.get_Advices');
 });
+
+
+
