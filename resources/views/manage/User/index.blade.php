@@ -55,7 +55,7 @@
                                             <i class="fas fa-filter"></i>
                                         </button>
                                         <button  class="btn btn-dark " data-toggle="modal" onclick="addFunction()">
-                                            اضافة منتج جديد
+                                            اضافة عضو جديد
                                         </button>
                                         &nbsp;
                                         <button  class="btn btn-danger " data-toggle="modal" onclick="deleteFunction(0,2)">
@@ -90,6 +90,7 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        @if(!$user_type)
                                         <div class="col-sm-12 col-md-2">
                                             <div class="form-group">
                                                 <select name="user_type" class="custom-select mr-sm-2"  id="user_type">
@@ -100,6 +101,7 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        @endif
                                         <div class="col-sm-12 col-md-2">
                                             <div class="form-group">
                                                 <select name="dataFilter" class="custom-select mr-sm-2"  id="dateF">

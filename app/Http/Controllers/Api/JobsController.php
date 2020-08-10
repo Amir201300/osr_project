@@ -40,5 +40,15 @@ class JobsController extends Controller
         return $this->apiResponseData(new JobsResource($job),$msg,200);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function jobs_by_city($id)
+    {
+        $jobs_by_city = Jobs::where('city_id',$id)->get();
+        $msg = 'تمت العمليه بنجاح';
+        return $this->apiResponseData(JobsResource::collection($jobs_by_city),$msg,200);
+    }
 
 }

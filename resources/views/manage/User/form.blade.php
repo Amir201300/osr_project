@@ -14,20 +14,20 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="example-email">اسم المنتج</label>
+                                            <label for="example-email">اسم العضو</label>
                                             <input type="text" id="name" required name="name"  class="form-control"   >
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="example-email">السعر</label>
+                                            <label for="example-email">البريد الالكتروني</label>
                                             <input type="text" id="price" required name="price"  class="form-control"   >
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="example-email">القسم</label>
+                                            <label for="example-email">المدينة</label>
                                             <select  id="cat_id" name="cat_id"  required class="form-control"   >
                                                 @foreach($city as $row)
                                                 <option value="{{$row->id}}"> {{$row->name}}</option>
@@ -38,7 +38,7 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="example-email">المتجر</label>
+                                            <label for="example-email">المنطقة</label>
                                             <select  id="user_id" name="user_id"  required class="form-control"   >
                                                 @foreach($users as $row)
                                                     <option value="{{$row->id}}"> {{$row->name}}</option>
@@ -49,16 +49,17 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="example-email">الصور (الحد الاقصى هو ثلاث صور)</label>
-                                            <input type="file" id="image"  name="image[]" multiple  class="form-control"   >
+                                            <label for="example-email">الصورة </label>
+                                            <input type="file" id="image"  name="image"  class="form-control"   >
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="example-email">توصيل الطلبات</label>
+                                            <label for="example-email">نوع العضو</label>
                                             <select  id="delivery" name="delivery"  class="form-control"   >
-                                                <option value="1"> يوصل</option>
-                                                <option value="0"> لا يوصل</option>
+                                                <option value="1"> عضو</option>
+                                                <option value="2"> متجر</option>
+                                                <option value="3"> مندوب</option>
                                             </select>
                                         </div>
                                     </div>

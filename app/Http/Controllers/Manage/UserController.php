@@ -22,7 +22,8 @@ class UserController extends Controller
     {
         $city = City::where('status',1)->get();
         $users=User::where('user_type',2)->where('status',1)->get();
-        return view('manage.User.index', compact('city','users'));
+        $user_type=$request->user_type;
+        return view('manage.User.index', compact('city','users','user_type'));
     }
 
     /**

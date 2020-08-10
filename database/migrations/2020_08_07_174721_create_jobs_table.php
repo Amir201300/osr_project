@@ -16,11 +16,13 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
-            $table->string('desc')->nullable();
+            $table->text('desc')->nullable();
             $table->tinyInteger('job_type')->nullable();
             $table->string('email')->nullable();
+            $table->string('image')->nullable();
+            $table->string('link')->nullable();
             $table->string('phone')->nullable();
-            $table->double('salary')->nullable();
+            $table->string('salary')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('set null');
             $table->unsignedInteger('user_id')->nullable();

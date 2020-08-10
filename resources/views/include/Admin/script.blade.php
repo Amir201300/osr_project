@@ -106,7 +106,7 @@ function deleteProccess(url)
                 var  user_type ='عضو';
                 if(data.user_type == 2)
                     user_type='متجر';
-                if(data.user_type == 2)
+                if(data.user_type == 3)
                     user_type='مندوب';
                 $('#nameShow').text(data.name);
                 $('#nameUserShow').text(data.name);
