@@ -176,8 +176,8 @@ class JobsController extends Controller
                 '</div></td>';
             return $checkBox;
         })->editColumn('image',function($data){
-            $image='<a href="/images/Jobs/'.$data->image.'" target="_blank">'.
-                '<img src="/images/Jobs/'.$data->image.'" width="50" height="50"></a>';
+            $image='<a href="'.getImageUrl('Jobs',$data->image).'" target="_blank">'.
+                '<img src="'.getImageUrl('Jobs',$data->image).'" width="50" height="50"></a>';
             return $image;
         })->editColumn('link',function($data){
             $image='<a href="'.$data->link.'" target="_blank">اضغط هنا</a>';

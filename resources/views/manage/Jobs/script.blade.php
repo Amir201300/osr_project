@@ -28,7 +28,6 @@
                 {data: 'image', name: 'image'},
                 {data: 'link', name: 'link'},
                 {data: 'job_type', name: 'job_type'},
-                {data: 'salary', name: 'salary'},
                 {data: 'city_id', name: 'city_id'},
                 {data: 'user_id', name: 'user_id'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},

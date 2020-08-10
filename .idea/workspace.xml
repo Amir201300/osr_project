@@ -3,21 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fd3213f7-b756-4545-8869-cf0eb74dcfc3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Manage/JobsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Manage/JobsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Manage/SliderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Manage/SliderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Manage/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Manage/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/JobsResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/JobsResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manage/City.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manage/Jobs.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/manage/Jobs/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manage/Jobs/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/manage/Jobs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manage/Jobs/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/manage/Jobs/script.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manage/Jobs/script.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manage/Packages.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manage/Rate.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manage/Slider.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/manage/User/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manage/User/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manage/User/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manage/User/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manage/User/script.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manage/User/script.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,8 +46,47 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/manage/User/form.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+            <state relative-caret-position="481">
+              <caret line="93" column="26" lean-forward="true" selection-start-line="93" selection-start-column="26" selection-end-line="93" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Manage/JobsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="182" column="70" selection-start-line="182" selection-start-column="67" selection-end-line="182" selection-end-column="70" />
+              <folding>
+                <element signature="n#style#0;n#i#0;n#button#0;n#td#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/manage/Jobs/form.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="56" column="56" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/manage/Jobs/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="77" selection-start-line="77" selection-end-line="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/manage/Jobs/script.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
@@ -67,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Manage/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="379">
-              <caret line="235" column="41" lean-forward="true" selection-start-line="235" selection-start-column="41" selection-end-line="235" selection-end-column="41" />
+              <caret line="240" column="41" lean-forward="true" selection-start-line="240" selection-start-column="41" selection-end-line="240" selection-end-column="41" />
               <folding>
                 <element signature="n#style#0;n#i#0;n#button#0;n#td#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#i#0;n#button#0;n#td#0;n#!!top" expanded="true" />
@@ -95,17 +123,17 @@
       <list>
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/database/migrations/2020_08_07_174721_create_jobs_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/manage/Jobs/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/manage/Jobs/form.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/manage/Jobs/script.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Resources/JobsResource.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Manage/JobsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Manage/SliderController.php" />
         <option value="$PROJECT_DIR$/resources/views/manage/User/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Manage/UserController.php" />
         <option value="$PROJECT_DIR$/resources/views/manage/User/script.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/manage/User/form.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/vendor/form.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Manage/JobsController.php" />
+        <option value="$PROJECT_DIR$/resources/views/manage/Jobs/form.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/manage/Jobs/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/manage/Jobs/script.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/manage/User/form.blade.php" />
       </list>
     </option>
   </component>
@@ -292,6 +320,27 @@
             <path>
               <item name="osr_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="osr_project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="osr_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="osr_project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="osr_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="osr_project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Manage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="osr_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="osr_project" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -313,6 +362,14 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="manage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="osr_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="osr_project" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="manage" type="462c0819:PsiDirectoryNode" />
+              <item name="Jobs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="osr_project" type="b2602c69:ProjectViewProjectNode" />
@@ -349,6 +406,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/manage/User" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -386,12 +444,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597081415746</updated>
-      <workItem from="1597081416882" duration="7129000" />
+      <workItem from="1597081416882" duration="8217000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7129000" />
+    <option name="totallyTimeSpent" value="8217000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="696" extended-state="6" />
@@ -441,13 +499,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6">
           <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/manage/Jobs/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="75" column="48" selection-start-line="75" selection-start-column="48" selection-end-line="75" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -534,20 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/manage/Jobs/form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="20" column="35" lean-forward="true" selection-start-line="20" selection-start-column="35" selection-end-line="24" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/manage/Jobs/script.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="146" column="34" lean-forward="true" selection-start-line="146" selection-start-column="34" selection-end-line="146" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/manage/User/script.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -558,19 +595,9 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Manage/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
-          <caret line="235" column="41" lean-forward="true" selection-start-line="235" selection-start-column="41" selection-end-line="235" selection-end-column="41" />
+          <caret line="240" column="41" lean-forward="true" selection-start-line="240" selection-start-column="41" selection-end-line="240" selection-end-column="41" />
           <folding>
             <element signature="n#style#0;n#i#0;n#button#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#button#0;n#td#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Manage/JobsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="111" column="13" lean-forward="true" selection-start-line="111" selection-start-column="13" selection-end-line="111" selection-end-column="13" />
-          <folding>
             <element signature="n#style#0;n#i#0;n#button#0;n#td#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -583,10 +610,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Manage/JobsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="182" column="70" selection-start-line="182" selection-start-column="67" selection-end-line="182" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#button#0;n#td#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/manage/Jobs/form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="56" column="56" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/manage/Jobs/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/manage/Jobs/script.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/manage/User/form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+        <state relative-caret-position="481">
+          <caret line="93" column="26" lean-forward="true" selection-start-line="93" selection-start-column="26" selection-end-line="93" selection-end-column="26" />
         </state>
       </provider>
     </entry>

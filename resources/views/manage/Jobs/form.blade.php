@@ -54,7 +54,7 @@
                                             <input type="text" id="salary" name="salary" required class="form-control"   >
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="example-email">المدينه</label>
                                             <select  id="city_id" name="city_id"  class="form-control"   required>
@@ -64,7 +64,7 @@
                                             </select>
                                         </div>
                                      </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="example-email">نوع الوظيفه</label>
                                             <select  id="job_type" name="job_type"  class="form-control"   >
