@@ -25,6 +25,8 @@
                 {data: 'checkBox', name: 'checkBox'},
                 {data: 'id', name: 'id'},
                 {data: 'name', name: 'name'},
+                {data: 'image', name: 'image'},
+                {data: 'link', name: 'link'},
                 {data: 'job_type', name: 'job_type'},
                 {data: 'salary', name: 'salary'},
                 {data: 'city_id', name: 'city_id'},
@@ -142,6 +144,7 @@
       success : function(data){
 
         $('#name').val(data.name);
+        $('#link').val(data.link);
         $('#desc').val(data.desc);
         $('#job_type').val(data.job_type);
         $('#email').val(data.email);

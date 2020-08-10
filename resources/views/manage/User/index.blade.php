@@ -55,7 +55,7 @@
                                             <i class="fas fa-filter"></i>
                                         </button>
                                         <button  class="btn btn-dark " data-toggle="modal" onclick="addFunction()">
-                                            اضافة منتج جديد
+                                            اضافة عضو جديد
                                         </button>
                                         &nbsp;
                                         <button  class="btn btn-danger " data-toggle="modal" onclick="deleteFunction(0,2)">

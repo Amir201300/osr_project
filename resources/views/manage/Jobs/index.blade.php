@@ -72,6 +72,8 @@
                                         <th class="sorting_asc" tabindex="0" aria-controls="file_export" rowspan="1" colspan="1" aria-sort="ascending" aria-label=" : activate to sort column descending" style="width: 0px;"> </th>
                                         <th>#</th>
                                         <th>الوظيفه</th>
+                                        <th>صوره الوظيفه</th>
+                                        <th>رابط الوظيفه</th>
                                         <th>نوع الوظيفه</th>
                                         <th>الراتب</th>
                                         <th>المدينه</th>

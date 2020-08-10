@@ -20,6 +20,19 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
+                                            <label for="example-email">صورة الوظيفه</label>
+                                            <input type="file" id="image" name="image"  class="form-control"   >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="example-email">رابط الوظيفه</label>
+                                            <input type="text" id="link" name="link" required class="form-control"   >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
                                             <label for="example-email">البريد الالكتروني</label>
                                             <input type="text" id="email" name="email"  class="form-control"   >
                                         </div>

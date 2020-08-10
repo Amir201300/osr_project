@@ -12,86 +12,73 @@
                             <div class="modal-body">
                                 <div class="row">
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="example-email">اسم المنتج</label>
+                                            <label for="example-email">اسم العضو</label>
                                             <input type="text" id="name" required name="name"  class="form-control"   >
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="example-email">السعر</label>
-                                            <input type="text" id="price" required name="price"  class="form-control"   >
+                                            <label for="example-email">الهاتف</label>
+                                            <input type="text" id="phone" required name="phone"  class="form-control"   >
                                         </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="example-email">البريد الالكتروني</label>
+                                                <input type="text" id="email" required name="email"  class="form-control"   >
+                                            </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="example-email">القسم</label>
-                                            <select  id="cat_id" name="cat_id"  required class="form-control"   >
+                                            <label for="example-email">المدينه</label>
+                                            <select  id="city_id" name="city_id"  required class="form-control"   >
                                                 @foreach($city as $row)
                                                 <option value="{{$row->id}}"> {{$row->name}}</option>
                                                     @endforeach
                                             </select>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="example-email">المتجر</label>
-                                            <select  id="user_id" name="user_id"  required class="form-control"   >
-                                                @foreach($users as $row)
-                                                    <option value="{{$row->id}}"> {{$row->name}}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="example-email">المنطقه</label>
+                                                <select  id="area_id" name="area_id"  required class="form-control"   >
+                                                    @foreach($area as $row)
+                                                        <option value="{{$row->id}}"> {{$row->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="example-email">الصور (الحد الاقصى هو ثلاث صور)</label>
-                                            <input type="file" id="image"  name="image[]" multiple  class="form-control"   >
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="example-email">حالة التفعيل</label>
+                                                <select  id="status" name="status"  class="form-control"   >
+                                                    <option value="1"> مفعل</option>
+                                                    <option value="0"> غير مفعل</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="example-email">توصيل الطلبات</label>
-                                            <select  id="delivery" name="delivery"  class="form-control"   >
-                                                <option value="1"> يوصل</option>
-                                                <option value="0"> لا يوصل</option>
-                                            </select>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="example-email">نوع العضو</label>
+                                                <select  id="user_type" name="user_type"  class="form-control"   >
+                                                    <option value="1">عضو</option>
+                                                    <option value="2">متجر</option>
+                                                    <option value="3">مندوب</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
 
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="example-email">حالة التمييز</label>
-                                            <select  id="special" name="special"  class="form-control"   >
-                                                <option value="1"> مميز</option>
-                                                <option value="0"> غير مميز</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="example-email">حالة التفعيل</label>
-                                            <select  id="status" name="status"  class="form-control"   >
-                                                <option value="1"> مفعل</option>
-                                                <option value="0"> غير مفعل</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="example-email">عن المنتج</label>
-                                            <textarea  id="desc"  name="desc"  class="form-control"   >
-                                            </textarea>
-                                        </div>
-                                    </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="example-email">صورة العضو</label>
+                                                <input type="file" id="image" name="image"  class="form-control"   >
+                                            </div>
 
                                 </div>
                             </div>

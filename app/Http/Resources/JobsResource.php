@@ -28,6 +28,8 @@ class JobsResource extends JsonResource
             'city_id'      => (int)$this->city_id ,
            // 'user_id'      => $this->user_id ? $this->user_id->name : null,
             'desc'      => $this->desc,
+            'link'      => $this->link,
+            'image'      => getImageUrl('Jobs',$this->image),
         ];
     }
 }

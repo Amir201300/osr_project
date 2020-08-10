@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Manage;
 
 use App\Interfaces\UserInterface;
+use App\Models\Area;
 use App\Models\Category;
 use App\Models\City;
 use App\User;
@@ -21,8 +22,9 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $city = City::where('status',1)->get();
+        $area = Area::all();
         $users=User::where('user_type',2)->where('status',1)->get();
-        return view('manage.User.index', compact('city','users'));
+        return view('manage.User.index', compact('city','users','area'));
     }
 
     /**
@@ -57,13 +59,40 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request,UserInterface $User)
+    public function store(Request $request)
     {
-        $validate_User=$User->validate_User($request,0,0);
-        if(isset($validate_User)){
-            return $validate_User;
-        }
-        $User->save_or_update($request,0,0);
+        $this->validate(
+            $request,
+            [
+                'name' => 'required|min:3',
+                'image' => 'required',
+                'user_type' => 'required',
+                'city_id' => 'exists:cities,id',
+                'area_id' => 'exists:areas,id',
+            ],
+            [
+                'name.required' => 'من فضلك ادخل اسم العضو',
+                'image.required' => 'من فضلك ادخل صوره للعضو',
+                'name.min' => 'يجب ان لا يقل عدد حروف اسم العضو عن ثلاثة احرف',
+                'user_type.required' => 'من فضلك ادخل نوع العضو',
+                'city_id.exists' => 'المحافظه المدخله غير موجوده',
+                'area_id.exists' => 'المنطقه المدخله غير موجوده',
+            ]
+
+        );
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->image = saveImage('Users',$request->image);
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->city_id = $request->city_id;
+        $user->area_id = $request->area_id;
+        $user->status = $request->status;
+        $user->user_type = $request->user_type;
+        $user->city_id = $request->city_id;
+        $user->social = 0;
+        $user->save();
         return response()->json(['errors' => false]);
     }
 
@@ -88,17 +117,47 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request,UserInterface $User)
+    public function update(Request $request)
     {
-        $validate_User=$User->validate_User($request,$request->id,0);
-        if(isset($validate_User)){
-            return $validate_User;
+        $user = User::find($request->id);
+        if (is_null($user)) {
+            return response()->json(['errors' => true]);
         }
-        $User->save_or_update($request,$request->id,0);
+        $this->validate(
+            $request,
+            [
+                'name' => 'required|min:3',
+                'image' => 'required',
+                'user_type' => 'required',
+                'city_id' => 'exists:cities,id',
+                'area_id' => 'exists:areas,id',
+            ],
+            [
+                'name.required' => 'من فضلك ادخل اسم العضو الجديد',
+                'image.required' => 'من فضلك ادخل صوره العضو الجديده',
+                'name.min' => 'يجب ان لا يقل عدد حروف اسم العضو عن ثلاثة احرف',
+                'user_type.required' => 'من فضلك ادخل نوع العضو الجديد',
+                'city_id.exists' => 'المحافظه المدخله غير موجوده',
+                'area_id.exists' => 'المنطقه المدخله غير موجوده',
+            ]
+
+        );
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->city_id = $request->city_id;
+        $user->area_id = $request->area_id;
+        $user->status = $request->status;
+        $user->user_type = $request->user_type;
+        if($request->image){
+            deleteFile('Users',$user->image);
+            $user->image=saveImage('Users',$request->image);
+        }
+        $user->save();
+
         return response()->json(['errors' => false]);
 
     }
-
     /**
      * @param Request $request
      * @param $id

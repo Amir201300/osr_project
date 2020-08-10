@@ -43,11 +43,13 @@ class JobsController extends Controller
             $request,
             [
                 'name' => 'required|min:3',
+                'image' => 'required',
                 'job_type' => 'required',
                 'city_id' => 'exists:cities,id',
             ],
             [
                 'name.required' => 'من فضلك ادخل اسم الوظيفه',
+                'image.required' => 'من فضلك ادخل صوره للوظيفه',
                 'name.min' => 'يجب ان لا يقل عدد حروف اسم الوظيفه عن ثلاثة احرف',
                 'job_type.required' => 'من فضلك ادخل نوع الوظيفه',
                 'city_id.exists' => 'المحافظه المدخله غير موجوده',
@@ -57,6 +59,8 @@ class JobsController extends Controller
 
         $Jobs = new Jobs();
         $Jobs->name = $request->name;
+        $Jobs->image = saveImage('Jobs',$request->image);
+        $Jobs->link = $request->link;
         $Jobs->desc = $request->desc;
         $Jobs->job_type = $request->job_type;
         $Jobs->email = $request->email;
@@ -109,12 +113,17 @@ class JobsController extends Controller
 
         );
         $Jobs->name = $request->name;
+        $Jobs->link = $request->link;
         $Jobs->desc = $request->desc;
         $Jobs->job_type = $request->job_type;
         $Jobs->email = $request->email;
         $Jobs->phone = $request->phone;
         $Jobs->salary = $request->salary;
         $Jobs->city_id = $request->city_id;
+        if($request->image){
+            deleteFile('Jobs',$Jobs->image);
+            $Jobs->image=saveImage('Jobs',$request->image);
+        }
         $Jobs->save();
 
         return response()->json(['errors' => false]);
@@ -166,7 +175,13 @@ class JobsController extends Controller
                 '<input type="checkbox" class="mybox" id="checkBox_' . $data->id . '" onclick="check(' . $data->id . ')">' .
                 '</div></td>';
             return $checkBox;
-
+        })->editColumn('image',function($data){
+            $image='<a href="/images/Jobs/'.$data->image.'" target="_blank">'.
+                '<img src="/images/Jobs/'.$data->image.'" width="50" height="50"></a>';
+            return $image;
+        })->editColumn('link',function($data){
+            $image='<a href="'.$data->link.'" target="_blank">اضغط هنا</a>';
+            return $image;
         })->editColumn('city_id',function($data){
             return $data->city->name;
         })->editColumn('user_id',function($data){
@@ -180,7 +195,7 @@ class JobsController extends Controller
                 return 'تدريب';
             if($data->job_type == 4)
                 return 'تطوع';
-        })->rawColumns(['action' => 'action', 'checkBox' => 'checkBox','city_id'=>'city_id','user_id'=>'user_id','job_type'=>'job_type'])->make(true);
+        })->rawColumns(['action' => 'action', 'checkBox' => 'checkBox','link'=>'link','city_id'=>'city_id','user_id'=>'user_id','job_type'=>'job_type','image'=>'image'])->make(true);
 
     }
 }

@@ -46,7 +46,7 @@
 
         $('#save').text('حفظ');
 
-        $('#title').text('{{trans("اضافة منتج جديد")}}');
+        $('#title').text('{{trans("اضافة عضو جديد")}}');
 
         $('#formSubmit')[0].reset();
 
@@ -134,13 +134,12 @@
       success : function(data){
 
         $('#name').val(data.name);
-        $('#price').val(data.price);
-        $('#desc').val(data.desc);
-        $('#delivery').val(data.delivery);
-        $('#cat_id').val(data.cat_id);
-        $('#user_id').val(data.user_id);
-        $('#special').val(data.special);
+        $('#phone').val(data.phone);
+        $('#email').val(data.email);
+        $('#city_id').val(data.city_id);
+        $('#area_id').val(data.area_id);
         $('#status').val(data.status);
+        $('#user_type').val(data.user_type);
         $('#id').val(id);
         $('#loadEdit_'+id).css({'display' : 'none'});
         $('#formModel').modal();

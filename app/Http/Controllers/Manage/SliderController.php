@@ -42,7 +42,7 @@ class SliderController extends Controller
                 'image' => 'required'
             ],
             [
-                'link.required' => 'من فضلك ادخل رابط الاعلان',
+                'link.required' => 'من فضلك ادخل را بط الاعلان',
                 'image.required' => 'من فضلك صوره للقسم',
             ]
 
