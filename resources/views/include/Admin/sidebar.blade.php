@@ -40,9 +40,42 @@
                 <!-- User Profile-->
                 <li class="nav-small-cap">
                     <i class="mdi mdi-dots-horizontal"></i>
-                    <span class="hide-menu">الاعضاء والمنتجات</span>
+                    <span class="hide-menu">الروابط الرئيسة</span>
                 </li>
                 {{-- USers --}}
+                {{-- settings --}}
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                        <i class="icon-Mailbox-Empty"></i>
+                        <span class="hide-menu">الاعدادات الرئيسية </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+
+                        <li class="sidebar-item">
+                            <a href="{{route('City.index')}}" class="sidebar-link">
+                                <i class="mdi mdi-email"></i>
+                                <span class="hide-menu">  المحافظات </span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{{route('Area.index')}}" class="sidebar-link">
+                                <i class="mdi mdi-email"></i>
+                                <span class="hide-menu">  المناطق </span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link  waves-effect waves-dark" href="{{route('categories.index')}}" aria-expanded="false">
+                                <i class="fa fa-info-circle"></i>
+                                <span class="hide-menu">الاقسام الرئيسية</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </li>
+
                 <li class="sidebar-item">
                     <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                         <i class="icon-Mailbox-Empty"></i>
@@ -66,6 +99,34 @@
                     </ul>
                 </li>
                 {{--End USers --}}
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                        <i class="icon-Mailbox-Empty"></i>
+                        <span class="hide-menu">خدماتنا </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+
+                        <li class="sidebar-item">
+                            <a href="{{route('Advices.index')}}" class="sidebar-link">
+                                <i class="mdi mdi-email"></i>
+                                <span class="hide-menu">  النصائح </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{route('Courses.index')}}" class="sidebar-link">
+                                <i class="fa fa-calendar"></i>
+                                <span class="hide-menu">الكورسات</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link  waves-effect waves-dark" href="{{route('Jobs.index')}}" aria-expanded="false">
+                                <i class="fa fa-address-card"></i>
+                                <span class="hide-menu">الوظائف</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
 
                 <li class="sidebar-item">
@@ -74,19 +135,10 @@
                         <span class="hide-menu">المنتجات</span>
                     </a>
                 </li>
-
                 <li class="nav-small-cap">
                     <i class="mdi mdi-dots-horizontal"></i>
-                    <span class="hide-menu">الاعدادات</span>
+                    <span class="hide-menu">روابط اخرى</span>
                 </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link  waves-effect waves-dark" href="{{route('categories.index')}}" aria-expanded="false">
-                        <i class="fa fa-info-circle"></i>
-                        <span class="hide-menu">الاقسام الرئيسية</span>
-                    </a>
-                </li>
-
                 <li class="sidebar-item">
                     <a class="sidebar-link  waves-effect waves-dark" href="{{route('Slider.index')}}" aria-expanded="false">
                         <i class="fa fa-image"></i>
@@ -94,12 +146,7 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link  waves-effect waves-dark" href="{{route('Jobs.index')}}" aria-expanded="false">
-                        <i class="fa fa-address-card"></i>
-                        <span class="hide-menu">الوظائف</span>
-                    </a>
-                </li>
+
 
                 <li class="sidebar-item">
                     <a class="sidebar-link  waves-effect waves-dark" href="{{route('Packages.index')}}" aria-expanded="false">
@@ -110,36 +157,7 @@
 
 
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                        <i class="icon-Mailbox-Empty"></i>
-                        <span class="hide-menu">الاعدادات الرئيسية </span>
-                    </a>
-                    <ul aria-expanded="false" class="collapse  first-level">
-
-                        <li class="sidebar-item">
-                            <a href="{{route('City.index')}}" class="sidebar-link">
-                                <i class="mdi mdi-email"></i>
-                                <span class="hide-menu">  المحافظات </span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="{{route('Area.index')}}" class="sidebar-link">
-                                <i class="mdi mdi-email"></i>
-                                <span class="hide-menu">  المناطق </span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="{{route('Advices.index')}}" class="sidebar-link">
-                                <i class="mdi mdi-email"></i>
-                                <span class="hide-menu">  النصائح </span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
+                {{-- Our services --}}
 
 
 

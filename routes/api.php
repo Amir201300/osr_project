@@ -104,4 +104,10 @@ Route::prefix('general_info')->group(function()
 });
 
 
+//Courses info
+Route::prefix('Courses')->group(function()
+{
+    Route::get('/get_Courses', 'Api\CoursesController@get_Courses')->name('Courses.get_Courses');
+});
+
 
