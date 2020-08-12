@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\store_info;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator,Auth,Artisan,Hash,File,Crypt;
@@ -66,8 +67,13 @@ class UserController extends Controller
         $user->save();
         $token = $user->createToken('TutsForWeb')->accessToken;
         $user['token']=$token;
-        //EmailsController::verify_email($user->id,);
-        $msg=  'تم التسجيل بنجاح' ;
+        EmailsController::verify_email($user->id);
+        if($request->user_type == 2){
+            $info=new store_info();
+            $info->user_id=$user->id;
+            $info->save();
+        }
+        $msg=  'تم التسجيل بنجاح, برجاء تفعيل الحساب عن الطريق الكود المرسل الى بريدكم الالكتروني' ;
         return $this->apiResponseData(new UserResource($user),$msg,200);
     }
 
@@ -288,6 +294,46 @@ class UserController extends Controller
         $msg =  'تم رفع الصورة بنجاح' ;
         return $this->apiResponseMessage(1,$msg,200);
 
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function check_code(Request $request)
+    {
+        $user=Auth::user();
+        if($request->code == $user->code)
+        {
+            $user->code=null;
+            $user->status=1;
+            $user->save();
+            $msg='تم التفعيل بنجاح' ;
+            return $this->apiResponseMessage(1,$msg,200);
+        }
+        $msg='الكود غير مطابق';
+        return $this->apiResponseMessage(0,$msg,200);
+
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function resend_code()
+    {
+        $user=Auth::user();
+        if($user->status == 1){
+            $msg= 'الحساب مفعل';
+            return $this->apiResponseMessage(0,$msg,200);
+        }
+        $send_mail=EmailsController::verify_email($user->id);
+        if($send_mail == 1)
+        {
+            $msg='تم اعادة ارسال كود التفعيل بنجاح';
+            return $this->apiResponseMessage(1,$msg,200);
+        }
+        $msg= 'حدث خطا حاول مجددا';
+        return $this->apiResponseMessage(0,$msg,200);
     }
 
 }

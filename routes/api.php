@@ -33,6 +33,8 @@ Route::middleware('auth:api')->group(function () {
         Route::post('/view_user/{id}', 'Api\UserController@view_user')->name('user.view_user');
         Route::post('/change_password', 'Api\UserController@change_password')->name('user.change_password');
         Route::post('/save_image', 'Api\UserController@save_image')->name('user.save_image');
+        Route::post('/check_code', 'Api\UserController@check_code')->name('user.check_code');
+        Route::post('/resend_code', 'Api\UserController@resend_code')->name('user.resend_code');
     });
 
     //Categories routs
@@ -79,6 +81,28 @@ Route::middleware('auth:api')->group(function () {
         Route::get('/all_products', 'Api\ProductsController@all_products')->name('Products.all_products');
     });
 
+    //Courses info
+    Route::prefix('Courses')->group(function()
+    {
+        Route::get('/get_Courses', 'Api\CoursesController@get_Courses')->name('Courses.get_Courses');
+    });
+
+//User_services info
+    Route::prefix('User_services')->group(function()
+    {
+        Route::post('/add_service', 'Api\StoresController@add_service')->name('User_services.add_service');
+        Route::post('/delete_service/{service_id}', 'Api\StoresController@delete_service')->name('User_services.delete_service');
+    });
+
+    //Stores info
+    Route::prefix('Stores')->group(function()
+    {
+        Route::get('/get_stores', 'Api\StoresController@get_stores')->name('Stores.get_stores');
+        Route::get('/search', 'Api\StoresController@search')->name('Stores.search');
+        Route::get('/single_store/{id}', 'Api\StoresController@single_store')->name('Stores.single_store');
+        Route::post('/update_info', 'Api\StoresController@update')->name('Stores.update_store');
+    });
+
 });
 /** End Auth Route **/
 
@@ -88,8 +112,7 @@ Route::prefix('Auth_general')->group(function()
     Route::post('/register', 'Api\UserController@register')->name('user.register');
     Route::post('/register_social', 'Api\UserController@register_social')->name('user.register_social');
     Route::post('/login', 'Api\UserController@login')->name('user.login');
-    Route::post('/login_social', 'Api\UserController@login_social')->name('user.login_social');
-    Route::get('/check_virfuy/{id}', 'Api\UserController@check_virfuy')->name('user.check_virfuy');
+    Route::get('/check_verify/{id}', 'Api\UserController@check_verify')->name('user.check_verify');
     Route::post('/forget_password', 'Api\UserController@forget_password')->name('user.forget_password');
     Route::post('/reset_password', 'Api\UserController@reset_password')->name('user.reset_password');
 });
@@ -104,10 +127,6 @@ Route::prefix('general_info')->group(function()
 });
 
 
-//Courses info
-Route::prefix('Courses')->group(function()
-{
-    Route::get('/get_Courses', 'Api\CoursesController@get_Courses')->name('Courses.get_Courses');
-});
+
 
 
