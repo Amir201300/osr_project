@@ -30,6 +30,8 @@
                 {data: 'expire_date', name: 'expire_date'},
                 {data: 'order', name: 'order'},
                 {data: 'status', name: 'status'},
+                {data: 'expire', name: 'expire'},
+                {data: 'city_id', name: 'city_id'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
     });
@@ -147,6 +149,7 @@
         $('#start_date').val(data.start_date);
         $('#order').val(data.order);
         $('#status').val(data.status);
+        $('#city_id').val(data.city_id);
         $('#id').val(id);
         $('#loadEdit_'+id).css({'display' : 'none'});
         $('#formModel').modal();

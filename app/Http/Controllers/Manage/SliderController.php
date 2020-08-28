@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Manage;
 
+use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\DataTables;
@@ -13,12 +14,12 @@ class SliderController extends Controller
 {
 
     /**
-     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        return view('manage.Slider.index');
+        $city=City::all();
+        return view('manage.Slider.index',compact('city'));
     }
 
     //View Function
@@ -53,6 +54,7 @@ class SliderController extends Controller
         $Slider->expire_date = $request->expire_date;
         $Slider->start_date = $request->start_date;
         $Slider->order = $request->order;
+        $Slider->city_id = $request->city_id;
         $Slider->image=saveImage('Slider',$request->image);
         $Slider->save();
         return response()->json(['errors' => false]);
@@ -99,6 +101,7 @@ class SliderController extends Controller
         $Slider->expire_date = $request->expire_date;
         $Slider->start_date = $request->start_date;
         $Slider->order = $request->order;
+        $Slider->city_id = $request->city_id;
         if($request->image){
             deleteFile('Slider',$Slider->image);
             $Slider->image=saveImage('Slider',$request->image);
@@ -153,8 +156,12 @@ class SliderController extends Controller
         })->editColumn('link',function($data){
             $image='<a href="'.$data->link.'" target="_blank">اضغط هنا</a>';
             return $image;
+        })->editColumn('expire',function($data){
+            return $data->expire_date > now() ? 'غير منتهي' : 'منتهي';
+        })->editColumn('city_id',function($data){
+            return $data->city  ? $data->city->name : 'لا يوجد';
         })->rawColumns(['action' => 'action', 'checkBox' => 'checkBox',
-            'status' => 'status', 'image' => 'image','link'=>'link'])->make(true);
+            'status' => 'status', 'image' => 'image','link'=>'link','expire'=>'expire','city_id'=>'city_id'])->make(true);
 
     }
 }

@@ -17,6 +17,7 @@ class JobsResource extends JsonResource
      */
     public function toArray($request)
     {
+        $date= \Carbon\Carbon::setLocale('ar');
         return [
             'id'        => $this->id,
             'name'      => $this->name,
@@ -30,6 +31,7 @@ class JobsResource extends JsonResource
             'desc'      => $this->desc,
             'link'      => $this->link,
             'image'      => getImageUrl('Jobs',$this->image),
+            'created_at'=>$this->created_at->diffForHumans()
         ];
     }
 }

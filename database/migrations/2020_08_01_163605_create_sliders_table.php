@@ -21,6 +21,8 @@ class CreateSlidersTable extends Migration
             $table->tinyInteger('status')->default(0)->nullable();
             $table->date('expire_date')->nullable();
             $table->date('start_date')->nullable();
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->timestamps();
         });
     }

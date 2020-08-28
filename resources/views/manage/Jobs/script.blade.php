@@ -65,8 +65,10 @@
               TosetV2('{{ trans("main.proccess") }}','info','',false);
 
           var id=$('#id').val();
-          var formData = new FormData($('#formSubmit')[0]);
-          url = save_method == 'add' ? "{{route('Jobs.store')}}" : "{{route('Jobs.update')}}" ;
+              var desc= CKEDITOR.instances.desc.getData();
+              var formData = new FormData($('#formSubmit')[0]);
+              formData.append('desc',desc);
+              url = save_method == 'add' ? "{{route('Jobs.store')}}" : "{{route('Jobs.update')}}" ;
           $.ajax({
           url : url,
           type : "post",
@@ -144,7 +146,7 @@
 
         $('#name').val(data.name);
         $('#link').val(data.link);
-        $('#desc').val(data.desc);
+        CKEDITOR.instances['desc'].setData(data.desc);
         $('#job_type').val(data.job_type);
         $('#email').val(data.email);
         $('#phone').val(data.phone);
@@ -194,5 +196,13 @@
 
     }
       }
+</script>
+
+
+<script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+
+<script>
+    CKEDITOR.replace( 'desc' );
+
 </script>
 

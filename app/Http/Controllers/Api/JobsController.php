@@ -51,4 +51,15 @@ class JobsController extends Controller
         return $this->apiResponseData(JobsResource::collection($jobs_by_city),$msg,200);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function search_by_name(Request $request)
+    {
+        $jobs_by_city = Jobs::where('name','LIKE','%' . $request->name . '%')->get();
+        $msg = 'تمت العمليه بنجاح';
+        return $this->apiResponseData(JobsResource::collection($jobs_by_city),$msg,200);
+    }
+
 }

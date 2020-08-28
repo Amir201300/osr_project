@@ -31,22 +31,31 @@
                                             <input type="number" id="order" name="order"  class="form-control"   >
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="example-email">تاريخ البداية</label>
                                             <input type="date" id="start_date" name="start_date" required class="form-control"   >
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="example-email">تاريخ الانتهاء</label>
                                             <input type="date" id="expire_date" name="expire_date" required class="form-control"   >
                                         </div>
                                     </div>
 
-
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="example-email">المدينة</label>
+                                            <select  id="city_id" name="city_id"  required class="form-control" >
+                                                @foreach($city as $row)
+                                                <option value="{{$row->id}}"> {{$row->name}}</option>
+                                                    @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="example-email">حالة التفعيل</label>
                                             <select  id="status" name="status"  class="form-control"   >
