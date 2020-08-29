@@ -25,7 +25,7 @@
                             <div class="dropdown-menu animated flipInY" aria-labelledby="Userdd">
                                 <a class="dropdown-item" href="{{route('profile.index')}}">
                                     <a class="dropdown-item" href="{{route('user.logout')}}">
-                                        <i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                                        <i class="fa fa-power-off m-r-5 m-l-5"></i> تسجيل الخروج</a>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link  waves-effect waves-dark" href="/manage/home" aria-expanded="false">
                         <i class="fa fa-home"></i>
-                        <span class="hide-menu">{{trans('main.home')}}</span>
+                        <span class="hide-menu">الصفحة الرئيسية</span>
                     </a>
                 </li>
                 <!-- User Profile-->
@@ -71,7 +71,12 @@
                                 <span class="hide-menu">الاقسام الرئيسية</span>
                             </a>
                         </li>
-
+                        <li class="sidebar-item">
+                            <a class="sidebar-link  waves-effect waves-dark" href="{{route('FAQ.index')}}" aria-expanded="false">
+                                <i class="fa fa-info-circle"></i>
+                                <span class="hide-menu">الاسالة الشائعه</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </li>

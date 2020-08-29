@@ -5,6 +5,8 @@ namespace App;
 use App\Models\Area;
 use App\Models\City;
 use App\Models\Product;
+use App\Models\store_info;
+use App\Models\User_services;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -60,5 +62,45 @@ class User extends Authenticatable
             ->where('status',1);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function services()
+    {
+        return $this->hasMany(User_services::class,'user_id');
+    }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function store_info()
+    {
+        return $this->hasOne(store_info::class,'user_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function my_product()
+    {
+        return $this->hasMany(Product::class,'user_id');
+    }
+
+    /**
+     * @param $type
+     * @return bool
+     */
+    public function is_required_type($type)
+    {
+        $rasult=$this->user_type == $type ? true : false;
+        return $rasult;
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function rateRelation()
+    {
+        return $this->morphToMany('App\User','RateRelation','rates')->withPivot('rate','comment','created_at','updated_at','id');
+    }
 }

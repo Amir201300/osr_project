@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->enum('user_type',['1','2','3'])->nullable();
             $table->string('image')->nullable();
             $table->integer('social')->nullable();
+            $table->integer('rate')->nullable();
             $table->unsignedBigInteger('area_id')->nullable();
             $table->foreign('area_id')->references('id')->on('areas')->onDelete('set null');
             $table->unsignedBigInteger('city_id')->nullable();

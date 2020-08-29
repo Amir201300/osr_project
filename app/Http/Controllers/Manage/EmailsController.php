@@ -11,29 +11,31 @@ use App\Models\Produc_view_user;
 class EmailsController extends Controller
 {
 
-    /*
-     * verify Email
-     * send mail to custom user to  verify
+    /**
+     * @param $user_id
+     * @return int
      */
 
-    public static function verify_email($user_id,$lang)
+    public static function verify_email($user_id)
     {
-        $user=User::find($user_id);
-            $email=$user->email;
-            $subject=$lang=='ar'? "verify your account" : 'تاكيد حسابك';
+        $user = User::find($user_id);
+        $email = $user->email;
+        $subject = "verify your account";
+        $code = mt_rand(999, 9999);
+        $user->code = $code;
+        $user->save();
+        $data = [];
+        $data['code'] = $code;
 
-            $data=[];
-            $data['id']=Crypt::encrypt($user_id);
-            $data['language']=$lang;
+        $name = $user->name;
+        Mail::send('emails.verify_email', $data, function ($mail) use ($email, $name, $subject) {
+            $mail->to($email, $name);
+            $mail->subject($subject);
+        });
 
-            $name=$user->frist_name . $user->last_name;
-            Mail::send('emails.verify_email', $data, function ($mail) use ($email,$name, $subject) {
-                $mail->to($email, $name);
-                $mail->subject($subject);
-            });
-
-            return $email;
+        return 1;
     }
+
 
     /**
      * @param $user

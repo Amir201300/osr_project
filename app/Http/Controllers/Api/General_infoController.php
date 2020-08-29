@@ -8,6 +8,7 @@ use App\Interfaces\HandleDataInterface;
 use App\Models\Advices;
 use App\Models\Area;
 use App\Models\City;
+use App\Models\FAQ;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator,Auth,Artisan,Hash,File,Crypt;
@@ -47,6 +48,17 @@ class General_infoController extends Controller
     public function get_Advices(HandleDataInterface $data,Request $request)
     {
         $Advices=Advices::where('status',1);
+        return $data->getAllData($Advices,$request,new AdvicesResource(null));
+    }
+
+    /**
+     * @param HandleDataInterface $data
+     * @param Request $request
+     * @return mixed
+     */
+    public function FAQ(HandleDataInterface $data,Request $request)
+    {
+        $Advices=FAQ::where('status',1);
         return $data->getAllData($Advices,$request,new AdvicesResource(null));
     }
 
