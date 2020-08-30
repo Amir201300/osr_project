@@ -23,6 +23,7 @@ class CreateJobsTable extends Migration
             $table->string('link')->nullable();
             $table->string('phone')->nullable();
             $table->string('salary')->nullable();
+            $table->tinyInteger('status')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('set null');
             $table->unsignedInteger('user_id')->nullable();

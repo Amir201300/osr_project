@@ -62,4 +62,42 @@ class JobsController extends Controller
         return $this->apiResponseData(JobsResource::collection($jobs_by_city),$msg,200);
     }
 
+    public function add_job(Request $request)
+    {
+        $input = $request->all();
+        $validationMessages = [
+            'name.required'       => 'من فضلك ادخل اسم الوظيفه'  ,
+            'name.min'            => 'اسم الوظيفه يجب ان يكون اكثر من 3 حروف'  ,
+            'city_id.exists'      =>' المحافظة المدخلة غير موجودة لدينا',
+            'city_id.required'      =>'برجاء ادخال محافظه',
+            'salary.required'      =>'برجاء راتب الوظيفه',
+        ];
+
+        $validator = Validator::make($input, [
+            'name'     => 'required|min:3',
+            'salary'=> 'required',
+            'city_id'=>'required|exists:cities,id',
+        ], $validationMessages);
+
+        if ($validator->fails()) {
+            return $this->apiResponseMessage(0, $validator->messages()->first(), 200);
+        }
+
+
+        $job = new Jobs();
+        $job->name = $request->name;
+        $job->desc = $request->desc;
+        $job->job_type = $request->job_type;
+        $job->email = $request->email;
+        $job->phone = $request->phone;
+        $job->salary = $request->salary;
+        $job->city_id = $request->city_id;
+        $job->status = 0;
+        $job->image = saveImage('Jobs',$request->image);
+        $job->link = $request->link;
+        $job->save();
+        $msg = 'تمت العمليه بنجاح';
+        return $this->apiResponseData(new JobsResource($job),$msg,200);
+    }
+
 }
