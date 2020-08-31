@@ -91,12 +91,14 @@ class JobsController extends Controller
         $job->email = $request->email;
         $job->phone = $request->phone;
         $job->salary = $request->salary;
+        $job->user_id = Auth::user()->id;
         $job->city_id = $request->city_id;
         $job->status = 0;
-        $job->image = saveImage('Jobs',$request->image);
+        if($request->image)
+            $job->image = saveImage('Jobs',$request->image);
         $job->link = $request->link;
         $job->save();
-        $msg = 'تمت العمليه بنجاح';
+        $msg = 'تم اضافة الوظيفة وسيقوم فريقنا بمرجعنها والموافقة عليها';
         return $this->apiResponseData(new JobsResource($job),$msg,200);
     }
 

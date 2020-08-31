@@ -54,7 +54,8 @@
                                             <input type="text" id="salary" name="salary" required class="form-control"   >
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="example-email">المدينه</label>
                                             <select  id="city_id" name="city_id"  class="form-control"   required>
@@ -64,7 +65,7 @@
                                             </select>
                                         </div>
                                      </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="example-email">نوع الوظيفه</label>
                                             <select  id="job_type" name="job_type"  class="form-control"   >
@@ -77,6 +78,15 @@
                                     </div>
 
 
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="example-email">حالة التفعيل</label>
+                                            <select  id="status" name="status"  class="form-control"   >
+                                                <option value="1"> مفعل</option>
+                                                <option value="0"> غير مفعل</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="example-email">الوصف</label>

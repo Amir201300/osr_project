@@ -67,6 +67,7 @@ class JobsController extends Controller
         $Jobs->phone = $request->phone;
         $Jobs->salary = $request->salary;
         $Jobs->city_id = $request->city_id;
+        $Jobs->status=$request->status;
         $Jobs->save();
         return response()->json(['errors' => false]);
     }
@@ -120,6 +121,7 @@ class JobsController extends Controller
         $Jobs->phone = $request->phone;
         $Jobs->salary = $request->salary;
         $Jobs->city_id = $request->city_id;
+        $Jobs->status=$request->status;
         if($request->image){
             deleteFile('Jobs',$Jobs->image);
             $Jobs->image=saveImage('Jobs',$request->image);
@@ -153,13 +155,15 @@ class JobsController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function getImage($id)
+    public function ChangeStatus($id,Request $request)
     {
-        $type = 2;
-        $array = Ads::find($id);
-        return view('manage.Images.index', compact('array', 'type'));
+        $Jobs=Jobs::find($id);
+        $Jobs->status=$request->status;
+        $Jobs->save();
+        return response()->json(['errors' => false]);
     }
 
 
@@ -185,7 +189,8 @@ class JobsController extends Controller
         })->editColumn('city_id',function($data){
             return $data->city->name;
         })->editColumn('user_id',function($data){
-            return $data->user ? $data->user->name : 'من قبل الادارة';
+            return  $data->user  ? '<a onclick="UserInfo(' . $data->user->id . ')" style="color : blue ; cursor:pointer">' .
+                $data->user->name . '</a>' : 'من قبل الادارة';
         })->editColumn('job_type',function ($data){
             if($data->job_type == 1)
                 return 'دوام كلي';
@@ -195,7 +200,15 @@ class JobsController extends Controller
                 return 'تدريب';
             if($data->job_type == 4)
                 return 'تطوع';
-        })->rawColumns(['action' => 'action', 'checkBox' => 'checkBox','link'=>'link','city_id'=>'city_id','user_id'=>'user_id','job_type'=>'job_type','image'=>'image'])->make(true);
+        })->editColumn('status', function ($data) {
+            $status = '<button class="btn waves-effect waves-light btn-rounded btn-success statusBut" style="cursor:pointer !important" onclick="ChangeStatus(0,'.$data->id.')" title="اضغط هنا لالغاء التفعيل">'
+                . trans('main.Active') .
+                '</button>';
+            if ($data->status == 0)
+                $status = '<button class="btn waves-effect waves-light btn-rounded btn-danger statusBut" onclick="ChangeStatus(1,'.$data->id.')" style="cursor:pointer !important" title="اضغط هنا للتفعيل">' . trans('main.inActive') . '</button>';
+            return $status;
+        })->rawColumns(['action' => 'action', 'checkBox' => 'checkBox','link'=>'link',
+            'city_id'=>'city_id','user_id'=>'user_id','job_type'=>'job_type','image'=>'image','status'=>'status'])->make(true);
 
     }
 }

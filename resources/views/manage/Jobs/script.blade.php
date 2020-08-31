@@ -30,6 +30,7 @@
                 {data: 'job_type', name: 'job_type'},
                 {data: 'city_id', name: 'city_id'},
                 {data: 'user_id', name: 'user_id'},
+                {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
     });
@@ -152,6 +153,7 @@
         $('#phone').val(data.phone);
         $('#salary').val(data.salary);
         $('#city_id').val(data.city_id);
+        $('#status').val(data.status);
         $('#id').val(id);
         $('#loadEdit_'+id).css({'display' : 'none'});
         $('#formModel').modal();
@@ -206,3 +208,17 @@
 
 </script>
 
+<script>
+    function ChangeStatus(status,id) {
+        TosetV2('{{ trans("main.proccess") }}','info','',false);
+        $.ajax({
+            url : '/manage/Jobs/ChangeStatus/' +id +'?status='+status,
+            type : 'get',
+            success : function(data){
+                $.toast().reset('all');
+                table.ajax.reload();
+                TosetV2('تمت العملية بنجاح','success','',5000);
+            }
+        })
+    }
+</script>

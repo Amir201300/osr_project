@@ -55,6 +55,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
                 Route::get('/show/{id}', 'Manage\JobsController@show')->name('Jobs.show');
                 Route::post('/update', 'Manage\JobsController@update')->name('Jobs.update');
                 Route::get('/delete/{id}', 'Manage\JobsController@delete')->name('Jobs.delete');
+                Route::get('/ChangeStatus/{id}', 'Manage\JobsController@ChangeStatus')->name('Jobs.ChangeStatus');
             });
 
             //Packages routes
