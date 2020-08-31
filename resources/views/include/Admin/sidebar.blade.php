@@ -159,9 +159,20 @@
                         <span class="hide-menu">الباقات</span>
                     </a>
                 </li>
-
-
-
+                {{-- Contact us  --}}
+                <li class="sidebar-item">
+                    <a class="sidebar-link  waves-effect waves-dark" href="{{route('Contact_us.index',['type'=>1])}}" aria-expanded="false">
+                        <i class="fa fa-envelope"></i>
+                        <span class="hide-menu">رسائل التواصل</span>
+                    </a>
+                </li>
+                {{-- compiment  --}}
+                <li class="sidebar-item">
+                    <a class="sidebar-link  waves-effect waves-dark" href="{{route('Contact_us.index',['type'=>2])}}" aria-expanded="false">
+                        <i class="fa fa-question"></i>
+                        <span class="hide-menu">الشكاوى والمقترحات</span>
+                    </a>
+                </li>
                 {{-- Our services --}}
 
 
