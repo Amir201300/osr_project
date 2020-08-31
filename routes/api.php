@@ -51,6 +51,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('/single_job/{id}', 'Api\JobsController@single_job')->name('jobs.single_job');
         Route::get('/jobs_by_city/{id}', 'Api\JobsController@jobs_by_city')->name('jobs.jobs_by_city');
         Route::get('/search_by_name', 'Api\JobsController@search_by_name')->name('jobs.search_by_name');
+        Route::post('/add_job', 'Api\JobsController@add_job')->name('jobs.add_job');
     });
 
     //packages routs
