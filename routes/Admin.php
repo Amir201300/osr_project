@@ -58,6 +58,17 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
                 Route::get('/ChangeStatus/{id}', 'Manage\JobsController@ChangeStatus')->name('Jobs.ChangeStatus');
             });
 
+            //Event routes
+            Route::prefix('Event')->group(function () {
+                Route::get('/index', 'Manage\EventController@index')->name('Event.index');
+                Route::get('/view', 'Manage\EventController@view')->name('Event.view');
+                Route::post('/store', 'Manage\EventController@store')->name('Event.store');
+                Route::get('/show/{id}', 'Manage\EventController@show')->name('Event.show');
+                Route::post('/update', 'Manage\EventController@update')->name('Event.update');
+                Route::get('/delete/{id}', 'Manage\EventController@delete')->name('Event.delete');
+                Route::get('/ChangeStatus/{id}', 'Manage\EventController@ChangeStatus')->name('Event.ChangeStatus');
+            });
+
             //Packages routes
             Route::prefix('Packages')->group(function () {
                 Route::get('/index', 'Manage\PackagesController@index')->name('Packages.index');

@@ -21,7 +21,7 @@ class CreateEventsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('link')->nullable();
             $table->date('date')->nullable();
-            $table->text('content')->nullable();
+            $table->text('desc')->nullable();
             $table->double('lat')->nullable();
             $table->double('lng')->nullable();
             $table->tinyInteger('status')->nullable();

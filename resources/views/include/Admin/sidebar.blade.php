@@ -149,6 +149,12 @@
                                 <span class="hide-menu">الوظائف</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link  waves-effect waves-dark" href="{{route('Event.index')}}" aria-expanded="false">
+                                <i class="fa fa-address-card"></i>
+                                <span class="hide-menu">الايفنتات</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

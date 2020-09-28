@@ -146,5 +146,10 @@ Route::prefix('Settings')->group(function()
 
 
 
-
+//Events routs
+Route::prefix('Events')->group(function()
+{
+    Route::get('/get_Events', 'Api\EventController@get_Event')->name('Events.get_Event');
+    Route::get('/single_Event/{id}', 'Api\EventController@single_Event')->name('Events.single_Event');
+});
 
