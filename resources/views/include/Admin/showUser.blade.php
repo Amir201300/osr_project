@@ -44,7 +44,7 @@
 
                         <div class="col-md-6 showDetilse">
                             <h5><i class="fas fa-calendar"></i>تاريخ التسجيل :</h5>
-                            <p class="valueModal" id="created_at"></p>
+                            <p class="valueModal" id="created_atUser"></p>
                         </div>
 
                     </div>

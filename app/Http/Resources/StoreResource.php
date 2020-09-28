@@ -19,7 +19,7 @@ class StoreResource extends JsonResource
         $user=$user=auth('api')->user();
         $is_like=false;
         if($user){
-            $like=Like::where('user_id',$user->id)->where('store_id',$this->id)->first();
+            $like=Like::where('user_id',$user->id)->where('model_id',$this->id)->where('type',1)->first();
             $is_like=!is_null($like) ? true : false;
         }
         return [
@@ -37,6 +37,7 @@ class StoreResource extends JsonResource
             'twitter'      =>$this->store_info ? $this->store_info->twitter : null,
             'whatsapp'      =>$this->store_info ? $this->store_info->whatsapp : null,
             'snap'      =>$this->store_info ? $this->store_info->snap : null,
+            'number_of_likes'      =>$this->likes->count(),
             'my_store'=> $this->id == Auth::user()->id ? true : false,
             'about_info'      =>$this->store_info ? $this->store_info->about_info : null,
             'cover_photo'      =>$this->store_info ? getImageUrl('Users',$this->store_info->cover_photo) : getImageUrl('Users',null) ,

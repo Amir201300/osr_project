@@ -46,7 +46,7 @@
 
         $('#save').text('حفظ');
 
-        $('#title').text('{{trans("اضافة عضو جديد")}}');
+        $('#title').text('{{trans("اضافة جديد")}}');
 
         $('#formSubmit')[0].reset();
 
@@ -104,11 +104,24 @@
           },
           error :  function(y)
           {
-            $("#save").attr("disabled", false);
+              $("#save").attr("disabled", false);
               $.toast().reset('all');
-            Toset('{{ trans("main.tryAgin") }}','error','');
+              Toset('{{ trans("main.tryAgin") }}','error','');
+              var error = y.responseText;
+              error= JSON.parse(error);
+              error = error.errors;
+              console.log(error );
+              $('#err').empty();
+              for(var i in error)
+              {
+                  for(var k in error[i])
+                  {
+                      var message=error[i][k];
+                      $('#err').append("<p class='text-danger'>*"+message+"</p>");
+                  }
+                  $('#err').slideDown(200);
 
-
+              }
           }
           });
 
@@ -116,7 +129,7 @@
 
 </script>
 
-{
+
 
 {{--Eedit --}}
 <script>
@@ -147,6 +160,121 @@
       }
     })
   }
+</script>
+
+{{--- Store Info --}}
+
+<script>
+    function storeInfo(id)
+    {
+        TosetV2('{{ trans("main.proccess") }}','info','',false);
+        $('#loadStoreInfo_'+id).css({'display' : ''});
+        save_method='edit';
+        $('#save').text('تعديل');
+        $('#title').text('تعديل');
+
+        $.ajax({
+            url : '/manage/User/storeInfo/' +id,
+            type : 'get',
+            success : function(data){
+                $('#loadStoreInfo_'+id).css({'display' : 'none'});
+                if(data.status == 2)
+                {
+                    alert('هذا ليس متجر');
+                }else {
+                    var image= data.cover_photo ? '/images/Users/' + data.cover_photo : '/images/1.png';
+
+                    $('#facebook').val(data.facebook);
+                    $('#whatsapp').val(data.whatsapp);
+                    $('#youtube').val(data.youtube);
+                    $('#twitter').val(data.twitter);
+                    $('#snap').val(data.snap);
+                    $('#instagram').val(data.instagram);
+                    $('#about_info').val(data.about_info);
+                    $('#user_type').val(data.user_type);
+                    $('#idUser').val(id);
+                    $('#coverLink').attr('href',image);
+                    $('#cover_photoImage').attr('src',image);
+                    $('#InfoModel').modal();
+                }
+                $.toast().reset('all');
+            }
+        })
+    }
+</script>
+
+
+{{--InfoForm Function --}}
+
+<script>
+    $('#InfoForm').submit(function(e){
+        e.preventDefault();
+        $("#saveInfo").attr("disabled", true);
+        $('#err').slideUp(200);
+
+        TosetV2('{{ trans("main.proccess") }}','info','',false);
+
+        var id=$('#id').val();
+        var formData = new FormData($('#InfoForm')[0]);
+        url =  "{{route('User.storeInfoUpdate')}}"  ;
+        $.ajax({
+            url : url,
+            type : "post",
+            data : formData,
+            contentType:false,
+            processData:false,
+
+            success : function(data)
+            {
+                $.toast().reset('all');
+                $("#saveInfo").attr("disabled", false);
+
+                if(data.errors==false)
+                {
+                    $('#InfoForm')[0].reset();
+                    $('#errInfo').slideUp(200);
+                    Toset('{{trans("main.success")}}','success','{{trans("main.successText")}}');
+
+                    $("#InfoModel").modal('toggle');
+                    table.ajax.reload();
+                }else if(data.status == 0){
+                    Toset('{{ trans("main.tryAgin") }}','error','');
+                    console.log(data.message)
+                    $('#errorText').text('* '+ data.message);
+                }
+                // Error
+                else
+                {
+                    $.toast().reset('all');
+                    $("#saveInfo").attr("disabled", false);
+                    Toset('{{ trans("main.error") }}','error','',5000);
+                }
+            },
+            error :  function(y)
+            {
+                $("#saveInfo").attr("disabled", false);
+                $.toast().reset('all');
+                Toset('{{ trans("main.tryAgin") }}','error','');
+                var error = y.responseText;
+                error= JSON.parse(error);
+                error = error.errors;
+                console.log(error );
+                $('#errInfo').empty();
+                for(var i in error)
+                {
+                    for(var k in error[i])
+                    {
+                        var message=error[i][k];
+                        $('#errInfo').append("<p class='text-danger'>*"+message+"</p>");
+                    }
+                    $('#errInfo').slideDown(200);
+
+                }
+            }
+        });
+
+    })
+
 </script>
 
 

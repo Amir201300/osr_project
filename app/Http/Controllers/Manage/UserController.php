@@ -6,6 +6,7 @@ use App\Interfaces\UserInterface;
 use App\Models\Area;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\store_info;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,10 +24,8 @@ class UserController extends Controller
     {
         $city = City::where('status',1)->get();
         $area = Area::all();
-        $users=User::where('user_type',2)->where('status',1)->get();
-        return view('manage.User.index', compact('city','users','area'));
-        $user_type=$request->user_type;
-        return view('manage.User.index', compact('city','users','user_type'));
+        $user_type = $request->user_type ;
+        return view('manage.User.index', compact('city','users','area','user_type'));
     }
 
     /**
@@ -71,6 +70,8 @@ class UserController extends Controller
                 'user_type' => 'required',
                 'city_id' => 'exists:cities,id',
                 'area_id' => 'exists:areas,id',
+                'email' => 'unique:users',
+                'phone' => 'unique:users',
             ],
             [
                 'name.required' => 'من فضلك ادخل اسم العضو',
@@ -79,6 +80,9 @@ class UserController extends Controller
                 'user_type.required' => 'من فضلك ادخل نوع العضو',
                 'city_id.exists' => 'المحافظه المدخله غير موجوده',
                 'area_id.exists' => 'المنطقه المدخله غير موجوده',
+                'phone.unique' => 'رقم الهاتف مسجل باسم عضو اخر',
+                'email.unique' => 'البريد الالكتروني مسجل باسم عضو اخر',
+
             ]
 
         );
@@ -129,18 +133,20 @@ class UserController extends Controller
             $request,
             [
                 'name' => 'required|min:3',
-                'image' => 'required',
                 'user_type' => 'required',
                 'city_id' => 'exists:cities,id',
                 'area_id' => 'exists:areas,id',
+                'email' => 'unique:users,email,' . $request->id,
+                'phone' => 'unique:users,phone,' . $request->id,
             ],
             [
                 'name.required' => 'من فضلك ادخل اسم العضو الجديد',
-                'image.required' => 'من فضلك ادخل صوره العضو الجديده',
                 'name.min' => 'يجب ان لا يقل عدد حروف اسم العضو عن ثلاثة احرف',
                 'user_type.required' => 'من فضلك ادخل نوع العضو الجديد',
                 'city_id.exists' => 'المحافظه المدخله غير موجوده',
                 'area_id.exists' => 'المنطقه المدخله غير موجوده',
+                'phone.unique' => 'رقم الهاتف مسجل باسم عضو اخر',
+                'email.unique' => 'البريد الالكتروني مسجل باسم عضو اخر',
             ]
 
         );
@@ -194,7 +200,47 @@ class UserController extends Controller
         return response()->json(['errors' => false]);
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
+    public function storeInfo($id)
+    {
+        $user=User::find($id);
+        if($user->user_type !=2){
+            return ['status'=>2];
+        }
+        $data=$user->store_info;
+        if(is_null($data)){
+            $info=new store_info();
+            $info->user_id=$user->id;
+            $info->save();
+        }
+        return $user->store_info;
 
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    public function storeInfoUpdate (Request $request)
+    {
+        $store_info = store_info::where('user_id',$request->id)->first();
+        $store_info->facebook = $request->facebook;
+        $store_info->whatsapp = $request->whatsapp;
+        $store_info->youtube = $request->youtube;
+        $store_info->twitter = $request->twitter;
+        $store_info->snap = $request->snap;
+        $store_info->instagram = $request->instagram;
+        $store_info->about_info = $request->about_info;
+        if($request->cover_photo){
+            deleteFile('Users',$store_info->cover_photo);
+            $store_info->cover_photo=saveImage('Users',$request->cover_photo);
+        }
+        $store_info->save();
+        return ['errors'=>false];
+    }
     /**
      * @param $data
      * @return mixed
@@ -206,7 +252,11 @@ class UserController extends Controller
             $options = '<td class="sorting_1"><button  class="btn btn-info waves-effect btn-circle waves-light" onclick="edit(' . $data->id . ')" type="button" ><i class="fa fa-spinner fa-spin" id="loadEdit_' . $data->id . '" style="display:none"></i><i class="fas fa-edit"></i></button>';
             $options .= ' <td class="sorting_1"><button title="رؤية التفاصيل" class="btn btn-success waves-effect btn-circle waves-light" onclick="UserInfo(' . $data->id . ')" type="button" ><i class="fa fa-spinner fa-spin" id="userInfo_' . $data->id . '" style="display:none"></i><i class="fas fa-eye"></i></button>';
             $options .= '<button type="button" onclick="deleteFunction(' . $data->id . ',1)" class="btn btn-danger waves-effect btn-circle waves-light"><i class=" fas fa-trash"></i> </button></td>';
-            return $options;
+           if($data->user_type == 2) {
+               $options .= ' <a title="التقييمات" href="/manage/Rate/get_rates/' . $data->id . '?type=1" target="_blank" style="color: #fff" class="btn btn-warning waves-effect btn-circle waves-light"><i class=" fas fa-comment"></i> </a></td>';
+               $options .= ' <button title="معلومات المتجر"  onclick="storeInfo(' . $data->id . ')" class="btn btn-secondary waves-effect btn-circle waves-light"><i class=" fas fa-info"></i><i class="fa fa-spinner fa-spin" id="loadStoreInfo_' . $data->id . '" style="display:none"></i> </a></td>';
+           }
+           return $options;
         })->addColumn('checkBox', function ($data) {
             $checkBox = '<td class="sorting_1">' .
                 '<div class="custom-control custom-checkbox">' .

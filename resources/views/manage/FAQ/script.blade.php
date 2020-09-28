@@ -130,7 +130,7 @@
 
 </script>
 
-{
+
 
 {{--Eedit --}}
 <script>

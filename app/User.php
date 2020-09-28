@@ -103,4 +103,13 @@ class User extends Authenticatable
     {
         return $this->morphToMany('App\User','RateRelation','rates')->withPivot('rate','comment','created_at','updated_at','id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function likes()
+    {
+        return $this->belongsToMany(User::class,'likes','model_id','user_id')
+            ->where('likes.type',1);
+    }
 }

@@ -3,8 +3,10 @@
 namespace App\Reposatries;
 
 use App\Interfaces\ProductInterface;
+use App\Models\Like;
 use App\Models\Product_image;
 use App\Models\Product_tags;
+use App\Models\Rate;
 use App\Models\Wishlist;
 use Validator, Artisan, Hash, File, Crypt;
 use App\Models\Product;
@@ -166,6 +168,8 @@ class ProductReposatry implements ProductInterface
         foreach ($Product->Product_images as $row){
             deleteFile('Product_images',$row->image);
         }
+        Rate::where('RateRelation_id',$product_id)->where('RateRelation_type','App\Models\Product')->delete();
+        Like::where('model_id',$product_id)->where('type',2)->delete();
         $Product->delete();
         return $this->apiResponseMessage(1,'تم حذف المنتج الخاص بكم بنجاح',200);
     }

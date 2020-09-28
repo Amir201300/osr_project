@@ -17,13 +17,18 @@ class RateController extends Controller
 
     /**
      * @param Request $request
+     * @param $product_id
      * @return mixed
      * @throws \Exception
      */
-    public function ProductRate(Request $request,$product_id)
+    public function ProductRate(Request $request,$model_id)
     {
-        $Product = Product::find($product_id);
-
+        if($request->type == 1) {
+            $Product = User::find($model_id);
+        }
+        if($request->type == 2) {
+            $Product = Product::find($model_id);
+        }
         $Product = $Product->rateRelation;
         return $this->dataFunction($Product);
     }
@@ -45,10 +50,16 @@ class RateController extends Controller
 
 
 
-    function get_rates ($product_id)
+    function get_rates ($model_id,Request $request)
     {
-        $product=Product::find($product_id);
-        return view('manage.Rate.index',compact('product'));
+        $type= $request->type;
+        if($request->type == 1) {
+            $product = User::find($model_id);
+        }
+        if($request->type == 2) {
+            $product = Product::find($model_id);
+        }
+        return view('manage.Rate.index',compact('product','type'));
     }
 
     /**

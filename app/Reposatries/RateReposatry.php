@@ -3,7 +3,11 @@
 namespace App\Reposatries;
 
 use App\Interfaces\RateInterface;
+use App\Models\Like;
+use App\Models\Product;
 use App\Models\Rate;
+use App\Models\Reporting;
+use App\User;
 use Auth,Validator;
 
 class RateReposatry implements RateInterface {
@@ -96,5 +100,71 @@ class RateReposatry implements RateInterface {
         }
     }
 
+    /**
+     * @param $model_id
+     * @param $type
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|mixed
+     */
+    public function likes($model_id, $type)
+    {
+        $user= Auth::user();
+        if(!$user->is_required_type(1)){
+            return $this->apiResponseMessage(0,'الاعضاء فقط يمكنهم الاعجاب ',200);
+        }
+        if($type == 1)
+            $model=User::where('id',$model_id)->where('user_type',2)->first();
+        if($type==2)
+            $model=Product::where('id',$model_id)->where('status',1)->first();
+        if(is_null($model)){
+            $model_name = $type == 1 ? 'المتجر'  : 'المنتج';
+            $msg=$model_name . ' غير موجود';
+            return $this->apiResponseMessage(0,$msg,200);
+        }
+        $like=Like::where('user_id',$user->id)->where('model_id',$model_id)->where('type',$type)->first();
+        if(is_null($like)){
+            $like=new Like();
+            $like->user_id=$user->id;
+            $like->model_id=$model_id;
+            $like->type=$type;
+            $like->save();
+            $msg='تم الاعجاب  بنجاح';
+        }else{
+            $msg='تم الغاء  الاعجاب ';
+            $like->delete();
+        }
+        return $this->apiResponseMessage(1,$msg,200);
+    }
+
+    /**
+     * @param $model_id
+     * @param $type
+     * @param $comment
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|mixed
+     */
+    public function reporting($model_id, $type,$comment)
+    {
+        $user= Auth::user();
+        if(!$user->is_required_type(1)){
+            return $this->apiResponseMessage(0,'الاعضاء فقط يمكنهم الاعجاب ',200);
+        }
+        if($type == 1)
+            $model=User::where('id',$model_id)->where('user_type',2)->first();
+        if($type==2)
+            $model=Product::where('id',$model_id)->where('status',1)->first();
+        if(is_null($model)){
+            $model_name = $type == 1 ? 'المتجر'  : 'المنتج';
+            $msg=$model_name . ' غير موجود';
+            return $this->apiResponseMessage(0,$msg,200);
+        }
+
+        $Reporting = new Reporting();
+        $Reporting->user_id = $user->id;
+        $Reporting->model_id = $model_id;
+        $Reporting->type = $type;
+        $Reporting->comment = $comment;
+        $Reporting->save();
+            $msg='تم تقديم البلاغ وسيقوم فريقنا بالرد عليكم في اقرب وقت';
+        return $this->apiResponseMessage(1,$msg,200);
+    }
 
 }

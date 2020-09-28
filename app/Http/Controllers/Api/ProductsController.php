@@ -9,6 +9,7 @@ use App\Interfaces\HandleDataInterface;
 use App\Interfaces\ProductInterface;
 use App\Interfaces\RateInterface;
 use App\Models\Product;
+use App\Models\Reporting;
 use App\Reposatries\HandleDataReposatry;
 use Illuminate\Http\Request;
 use Auth;
@@ -69,10 +70,12 @@ class ProductsController extends Controller
      */
     public function single_product(HandleDataReposatry $dataReposatry, $product_id)
     {
-        $product = Product::where('id', $product_id)->where('status', 1)->first();
+        $product = Product::where('id', $product_id)->where('status', 1)->get();
         if(is_null($product)){
             return $this->apiResponseMessage(0,'المنتج غير موجود',200);
         }
+        $product->view = $product->view + 1;
+        $product->save();
         $other_products=Product::where('user_id',$product->user_id)->where('status',1)->where('id','!=',$product_id)->take(6)->get();
         $data=[
           'product_details'=>new ProductResource($product),
@@ -143,4 +146,27 @@ class ProductsController extends Controller
         $product=Product::where('status',1);
         return $handleData->getAllData($product,$request,new ProductResource(null));
     }
+
+
+    /**
+     * @param $product_id
+     * @param RateInterface $rate
+     * @return mixed
+     */
+    public function likeOrUnlike($product_id, RateInterface $rate)
+    {
+        return $rate->likes($product_id, 2);
+    }
+
+    /**
+     * @param $product_id
+     * @param RateInterface $rate
+     * @param Request $request
+     * @return mixed
+     */
+    public function reporting($product_id, RateInterface $rate,Request $request)
+    {
+        return $rate->reporting($product_id, 2,$request->comment);
+    }
+
 }

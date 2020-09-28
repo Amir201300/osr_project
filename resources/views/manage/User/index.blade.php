@@ -1,7 +1,27 @@
+@php
+$title = 'جميع المستخدمين';
+$md= 6;
+$add= 'مستخدم';
+if($user_type == 2){
+    $title = 'المتاجر';
+    $md= 12;
+    $add= 'متجر';
+    }
+if($user_type == 1){
+    $title = 'الاعضاء';
+    $md= 12;
+    $add= 'عضو';
+    }
+if($user_type == 3){
+    $title = 'المندوبين';
+        $md= 12;
+         $add= 'مندوب';
+}
+@endphp
 @extends('layouts.manage')
 
 @section('title')
-    الاعضاء
+    {{$title}}
 @endsection
 
 @section('content')
@@ -25,7 +45,7 @@
                                 <li class="breadcrumb-item">
                                     <a href="{{route('admin.dashboard')}}">{{trans('main.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">الاعضاء</li>
+                                <li class="breadcrumb-item active" aria-current="page">{{$title}}</li>
                             </ol>
                         </nav>
                     </div>
@@ -48,14 +68,14 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex no-block align-items-center m-b-30">
-                                <h4 class="card-title">الاعضاء</h4>
+                                <h4 class="card-title">{{$title}}</h4>
                                 <div class="ml-auto">
                                     <div class="btn-group">
                                         <button type="button" id="showmenu" class="btn btn-dark fillterNew">
                                             <i class="fas fa-filter"></i>
                                         </button>
                                         <button  class="btn btn-dark " data-toggle="modal" onclick="addFunction()">
-                                            اضافة عضو جديد
+                                            اضافة {{$add}} جديد
                                         </button>
                                         &nbsp;
                                         <button  class="btn btn-danger " data-toggle="modal" onclick="deleteFunction(0,2)">
@@ -164,6 +184,7 @@
         <!-- footer -->
         <!-- ============================================================== -->
     @include('manage.User.form')
+    @include('manage.User.InfoModel')
     <!-- ============================================================== -->
         <!-- End footer -->
         <!-- ============================================================== -->

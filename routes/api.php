@@ -81,6 +81,8 @@ Route::middleware('auth:api')->group(function () {
         Route::get('/get_product_rates/{product_id}', 'Api\ProductsController@get_product_rates')->name('Products.get_product_rates');
         Route::get('/single_product/{product_id}', 'Api\ProductsController@single_product')->name('Products.single_product');
         Route::get('/all_products', 'Api\ProductsController@all_products')->name('Products.all_products');
+        Route::post('/likeOrUnlike/{product_id}', 'Api\ProductsController@likeOrUnlike')->name('Products.likeOrUnlike');
+        Route::post('/reporting/{product_id}', 'Api\ProductsController@reporting')->name('Products.reporting');
     });
 
     //Courses info
@@ -106,6 +108,7 @@ Route::middleware('auth:api')->group(function () {
         Route::post('/likeOrUnlike/{id}', 'Api\StoresController@likeOrUnlike')->name('Stores.likeOrUnlike');
         Route::post('/save_rate/{id}', 'Api\StoresController@save_rate')->name('Stores.save_rate');
         Route::get('/get_rates/{store_id}', 'Api\StoresController@get_rates')->name('Stores.get_rates');
+        Route::post('/reporting/{store_id}', 'Api\StoresController@reporting')->name('Stores.reporting');
     });
 
 });
@@ -130,6 +133,7 @@ Route::prefix('general_info')->group(function()
     Route::get('/get_area/{city_id}', 'Api\General_infoController@get_area')->name('general_info.get_area');
     Route::get('/get_Advices', 'Api\General_infoController@get_Advices')->name('general_info.get_Advices');
     Route::get('/FAQ', 'Api\General_infoController@FAQ')->name('general_info.FAQ');
+    Route::get('/settings', 'Api\General_infoController@settings')->name('general_info.settings');
 });
 
 

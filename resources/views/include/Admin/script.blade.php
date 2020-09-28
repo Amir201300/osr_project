@@ -66,14 +66,14 @@ function deleteProccess(url)
 {
   $("#deleteYse").attr("disabled", true);
 
-        Toset('{{ trans("main.proccess") }}','info','');
+        TosetV2('{{ trans("main.proccess") }}','info','',false);
 
       $.ajax({
           url : url,
           type : "get",
           success : function(data)
           {
-
+              $.toast().reset('all');
             table.ajax.reload();
             $('#DeleteModel').modal('toggle');
             $("#deleteYse").attr("disabled", false);
@@ -110,8 +110,9 @@ function deleteProccess(url)
                     user_type='مندوب';
                 $('#nameShow').text(data.name);
                 $('#nameUserShow').text(data.name);
+                $('#userName').text(data.name);
                 $('#phoneShow').text(data.phone);
-                $('#created_at').text(data.created_at);
+                $('#created_atUser').text(data.created_at);
                 $('#idShow').text(data.id);
                 $('#emailShow').text(data.email);
                 $('#cityShow').text(data.city_name);

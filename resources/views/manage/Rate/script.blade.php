@@ -18,7 +18,7 @@
             "search": "بحث :"
         },
 
-        ajax: "{{ route('Rate.ProductRate',$product->id) }}",
+        ajax: "/manage/Rate/ProductRate/{{$product->id}}?type={{$type}}",
 
         columns:
             [

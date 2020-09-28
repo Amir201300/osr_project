@@ -38,4 +38,13 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class,'cat_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function likes()
+    {
+        return $this->belongsToMany(User::class,'likes','model_id','user_id')
+            ->where('likes.type',2);
+    }
 }

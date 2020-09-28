@@ -121,30 +121,24 @@ class StoresController extends Controller
 
     /**
      * @param $store_id
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @param RateInterface $rate
+     * @return mixed
      */
-    public function likeOrUnlike($store_id)
+    public function likeOrUnlike($store_id, RateInterface $rate)
     {
-        $user=Auth::user();
-        if(!$user->is_required_type(1)){
-            return $this->apiResponseMessage(0,'الاعضاء فقط يمكنهم الاعجاب بالمتجر',200);
-        }
-        $store=User::where('id',$store_id)->where('user_type',2)->first();
-        if(is_null($store)){
-            return $this->apiResponseMessage(0,'المتجر غير موجود',200);
-        }
-        $like=Like::where('user_id',$user->id)->where('store_id',$store_id)->first();
-        if(is_null($like)){
-            $like=new Like();
-            $like->user_id=$user->id;
-            $like->store_id=$store_id;
-            $like->save();
-            $msg='تم الاعجاب بالمتجر بنجاح';
-        }else{
-            $msg='تم الغاء الاعجاب بالمتجر ';
-            $like->delete();
-        }
-        return $this->apiResponseMessage(1,$msg,200);
+        return $rate->likes($store_id, 1);
+    }
+
+
+    /**
+     * @param $product_id
+     * @param RateInterface $rate
+     * @param Request $request
+     * @return mixed
+     */
+    public function reporting($product_id, RateInterface $rate,Request $request)
+    {
+        return $rate->reporting($product_id, 1,$request->comment);
     }
 
 

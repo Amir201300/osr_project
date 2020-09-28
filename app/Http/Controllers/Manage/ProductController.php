@@ -28,6 +28,7 @@ class ProductController extends Controller
     /**
      * @param Request $request
      * @return mixed
+     * @throws \Exception
      */
     public function view(Request $request)
     {
@@ -170,7 +171,7 @@ class ProductController extends Controller
                 $status = '<button class="btn waves-effect waves-light btn-rounded btn-danger statusBut" onclick="ChangeStatus(1,'.$data->id.')" style="cursor:pointer !important" title="اضغط هنا للتفعيل">' . trans('main.inActive') . '</button>';
             return $status;
         })->editColumn('rate',function($data){
-            $rate= '<a href="/manage/Rate/get_rates/'.$data->id.'" title="اضغط لمشاهدة التقييمات" target="_blank">'.$this->rate_div($data->rate).'</a>';
+            $rate= '<a href="/manage/Rate/get_rates/'.$data->id.'?type=2" title="اضغط لمشاهدة التقييمات" target="_blank">'.$this->rate_div($data->rate).'</a>';
             return $data->rate > 0 ? $rate : 'لا توجد تقييمات لهذا المنتج';
         })->rawColumns(['action' => 'action', 'checkBox' => 'checkBox', 'rate'=>'rate','cat_id' => 'cat_id', 'user_id' => 'user_id', 'status' => 'status'])->make(true);
 

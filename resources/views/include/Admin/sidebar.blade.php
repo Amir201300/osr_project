@@ -78,6 +78,13 @@
                             </a>
                         </li>
 
+                        <li class="sidebar-item">
+                            <a class="sidebar-link  waves-effect waves-dark" href="{{route('Settings.index')}}" aria-expanded="false">
+                                <i class="fa fa-info-circle"></i>
+                                <span class="hide-menu">سياسنتا ومن نحن</span>
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
 
@@ -91,7 +98,7 @@
                         <li class="sidebar-item">
                             <a href="{{route('User.index')}}" class="sidebar-link">
                                 <i class="mdi mdi-email"></i>
-                                <span class="hide-menu">  الاعضاء </span>
+                                <span class="hide-menu">  جميع المستخدمين </span>
                             </a>
                         </li>
 
@@ -99,6 +106,18 @@
                             <a href="{{route('User.index',['user_type'=>2])}}" class="sidebar-link">
                                 <i class="mdi mdi-email"></i>
                                 <span class="hide-menu">  المتاجر </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{route('User.index',['user_type'=>3])}}" class="sidebar-link">
+                                <i class="mdi mdi-email"></i>
+                                <span class="hide-menu">  المندوبين </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{route('User.index',['user_type'=>1])}}" class="sidebar-link">
+                                <i class="mdi mdi-email"></i>
+                                <span class="hide-menu">  الاعضاء </span>
                             </a>
                         </li>
                     </ul>
@@ -173,8 +192,13 @@
                         <span class="hide-menu">الشكاوى والمقترحات</span>
                     </a>
                 </li>
-                {{-- Our services --}}
-
+                {{-- Reporting --}}
+                <li class="sidebar-item">
+                    <a class="sidebar-link  waves-effect waves-dark" href="{{route('Reporting.index')}}" aria-expanded="false">
+                        <i class="fa fa-info"></i>
+                        <span class="hide-menu">البلاغات</span>
+                    </a>
+                </li>
 
 
             </ul>
